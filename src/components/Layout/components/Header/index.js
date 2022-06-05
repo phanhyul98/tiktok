@@ -11,7 +11,6 @@ import {
     faCircleQuestion,
     faEarthAsia,
     faKeyboard,
-    faCloudUpload,
     faUser,
     faCoins,
     faGear,
@@ -25,6 +24,10 @@ import Button from '~/components/Button';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/Popper/Menu';
+import { UploadIcon } from '~/components/Icons';
+import { MessageIcon } from '~/components/Icons';
+import { InboxIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -137,9 +140,19 @@ function Header() {
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
-                            <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
+                            <Tippy delay={[0, 50]} content="Upload video" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                    <UploadIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy delay={[0, 50]} content="Message" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <MessageIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy delay={[0, 50]} content="Inbox" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <InboxIcon />
                                 </button>
                             </Tippy>
                         </>
@@ -151,10 +164,11 @@ function Header() {
                     )}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.6435-9/70616412_2442608926023992_7911170308571136000_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=174925&_nc_ohc=EBRac30aZ-AAX8En_5s&_nc_ht=scontent.fhan2-4.fna&oh=00_AT94EhYbQCVIlKSoyvVBU9S3ac7_Udqj_qCFspD-fkD3PA&oe=62C19E4E"
                                 className={cx('user-avatar')}
                                 alt="Yuri"
+                                fallback="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.6435-9/123272081_2865913623693518_2187270593494743886_n.jpg?stp=dst-jpg_s720x720&_nc_cat=101&ccb=1-7&_nc_sid=e3f864&_nc_ohc=8LSYk5lpXI8AX-Uydut&_nc_ht=scontent.fhan2-1.fna&oh=00_AT9gmwHijLkT-vNf5OYFKEruP_PiRwcQC_GQuCAuhi09jw&oe=62C444F1"
                             />
                         ) : (
                             <button className={cx('more-btn')}>

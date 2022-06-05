@@ -110,6 +110,8 @@
     background-color: transparent;
     padding: 4px 12px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
 }
 .user-avatar {
     width: 32px;
