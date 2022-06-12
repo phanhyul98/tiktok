@@ -14,6 +14,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import { Link } from 'react-router-dom';
+import routesConfig from '~/config/routes';
+
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
 import { UploadIcon } from '~/components/Icons';
@@ -94,7 +97,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <img src={images.logo} alt="Tiktok" />
+                <Link to={routesConfig.home} className={cx('logo-link')}>
+                    <img src={images.logo} alt="Tiktok" />
+                </Link>
                 <Search />
 
                 <div className={cx('actions')}>
@@ -113,6 +118,7 @@ function Header() {
                             <Tippy delay={[0, 50]} content="Inbox" placement="bottom">
                                 <button className={cx('action-btn')}>
                                     <InboxIcon />
+                                    <span className={cx('badge')}>12</span>
                                 </button>
                             </Tippy>
                         </>
@@ -132,7 +138,7 @@ function Header() {
                             />
                         ) : (
                             <button className={cx('more-btn')}>
-                                <FontAwesomeIcon icon={faEllipsisVertical} />
+                                <Search />
                             </button>
                         )}
                     </Menu>
